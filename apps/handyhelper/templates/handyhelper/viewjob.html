@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+
+<body>
+        <div class=heading>DOJO JOB POSTING</div>
+    <br>
+    <!-- {{request.session.userid}} -->
+    <h2>Hi! {{request.session.fname}}</h2>
+    <br>
+    <div class=title>Job Page</div>
+    <br>
+    <a href='/handyhelper/mainpage'>Main Page</a>
+    <br>
+    <a href='/logout'>logout</a><br>
+##############################################################################################
+<h2>Job Page</h2>
+
+
+<p>Job Title:{{job.title}}<br></p>
+<p>Posted by:{{job.user.fname}}<br></p>
+<p>Description:{{job.desc}}<br></p>
+<p>Location:{{job.location}}</p>
+<!-- {% for b in book.reviews.all %}
+<p>Comments:"{{b.review}}"<br></p>
+<p>Posted by:{{b.user.fname}}<br></p> -->
+{% endfor %}
+<!-- 
+<a href='/reads/deletebooks/{{book.id}}'>Delete Book</a> -->
+<br>
+##############################################################################################

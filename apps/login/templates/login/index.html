@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+
+
+</head>
+
+<body>
+    <div class=heading>DOJO JOB POSTING</div>
+    <br>
+    <div class=title>Registration</div>
+<!-- *************************FLASH MESSAGES*************************** -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+<!-- *************************CREATE USER FUNCTION*************************** -->
+
+    <form action='/create' method='POST'>
+        {% csrf_token %}
+        <p>First Name:<br><input type="text" name=fname></p>
+        <p>Last Name:<br><input type="text" name=lname></p>
+        <p>Email:<br><input type="email" name=email></p>
+        <p>Password:<br><input type="password" name=password></p>
+        <p>Confirm Password:<br><input type="password" name=conpassword></p>
+        <button type=submit>submit</button>
+    </form>
+
+
+
+    <div class=title>Log In</div>
+<!-- *************************FLASH MESSAGES*************************** -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- *************************LOGIN USER FUNCTION*************************** -->
+    <form action='/login' method='POST'>
+        {% csrf_token %}
+        <p>Email:<br><input type="email" name='logemail'></p>
+        <p>Password:<br><input type="password" name='logpassword'></p>
+        <button type=submit>submit</button>
+    </form>
+
+
+
+
+
+<!-- 
+
+
+ *************************DELETE FUNCTION*************************** -->
+<!-- - {{request.session.userid}}
+{{request.session.fname}}
+
+{% for m in User %}
+    <table>
+        <tr>
+            <th>{{m.fname}}</th>
+            <th>{{m.lname}}</th>
+            <th>{{m.email}}</th>
+            <th>{{m.password}}</th>
+            <th><a href='delete/{{m.id}}'>deletesuser</a> </th>
+        </tr>
+        {% endfor %}
+</table>
+
+ -->
+
+</body>
+

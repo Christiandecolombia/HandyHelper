@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+
+<body>
+        <div class=heading>DOJO JOB POSTING</div>
+    <br>
+    <!-- {{request.session.userid}} -->
+    <h2>Hi! {{request.session.fname}}</h2>
+    <br>
+    <div class=title>Add a job</div>
+    <br>
+    <a href='/handyhelper/mainpage'>Main Page</a>
+    <br>
+    <a href='/logout'>logout</a><br>
+    ##############################################################################################
+    <h2>Add A job</h2>
+
+<!-- *************************FLASH MESSAGES*************************** -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action='/handyhelper/createjob' method='POST'>
+        {% csrf_token %}
+        <p>Title:<br><input type='text' name='title'></p>
+        <p>Description:<br><input type='text' name='desc'></p>
+        <p>Location:<br><input type='text' name='location'></p>
+        <button type='submit'>submit</button>
+
+    </form>
+
+    <br>
+    ##############################################################################################
+
+
+</body>

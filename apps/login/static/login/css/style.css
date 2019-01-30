@@ -1,0 +1,29 @@
+body {
+    background-color: darksalmon;
+    font-family: sans-serif;
+    }
+    
+    .heading{
+        font-size: 50px;
+    }
+    .title{
+    font-size: 25px;
+}
+    table{
+        text-align: left;
+        width: 75%; 
+    }
+    table tr:nth-child(even) {
+        background-color: #eee;
+
+    }
+    table tr:nth-child(odd) {
+        background-color: #fff;
+
+    }
+    table th {
+        color: white;
+        background-color: black;
+        padding: 5px;
+
+    }

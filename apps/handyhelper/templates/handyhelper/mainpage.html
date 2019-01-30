@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+</head>
+
+<body>
+    <div class=heading>DOJO JOB POSTING</div>
+    <!-- {{request.session.userid}} -->
+    <h2>Hi!{{request.session.fname}}</h2>
+    <br>
+    <div class=title>Jobs</div>
+    <br>
+    <a href='/handyhelper/addjob'>Add A New Job</a>
+    <br>
+    <a href='/logout'>logout</a><br>
+    ##############################################################################################
+    <h2>Jobs</h2>
+
+    <br>
+    <table >
+        <tr>
+            <th>Title</th>
+            <th>Posted by</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Pages</th>
+            <th>Options</th>
+        </tr>
+        {% for m in Job %}
+        <tr>
+            <td>{{m.title}}</td>
+            <td>{{m.user.fname}} {{m.user.lname}} </td>
+            <td>{{m.location}}</td>
+            <td>{{m.desc}}</td>
+            <td><a href='/handyhelper/viewjob/{{m.id}}'>go to job page</a></td>
+            <td> {% if m.user.id == request.session.userid %}
+                <div style="display:inline;">
+
+                    <a href='/handyhelper/editjob/{{m.id}}'>edit</a>
+                    <a href='/handyhelper/deletejob/{{m.id}}'>delete</a>
+                </div>
+                {% else %}
+                <div style="display:none;">
+                    <a href='/handyhelper/editjob/{{m.id}}'>edit</a>
+                    <a href='/handyhelper/deletejob/{{m.id}}'>delete</a>
+                </div>
+                {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    ##############################################################################################
+
+    <!-- 
+
+    {% for m in User %}
+    <table>
+        <tr>
+            <th>{{m.id}}</th>
+            <th>{{m.fname}}</th>
+            <th>{{m.lname}}</th>
+            <th>{{m.email}}</th>
+            <th>{{m.password}}</th>
+        </tr>
+        {% endfor %}
+    </table> -->
+
+
+
+
+</body>
